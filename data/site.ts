@@ -45,16 +45,16 @@ export const site = {
     { value: 'Docker', label: 'entrega limpia' }
   ],
   performance: [
-    { label: 'Frontend', value: 'Nuxt + Vue', detail: 'Interfaz rápida, SEO y experiencia cuidada.' },
-    { label: 'Backend', value: 'C# + Java', detail: 'APIs, lógica de negocio y arquitectura mantenible.' },
+    { label: 'Frontend', value: 'Nuxt + Vue', detail: 'Interfaz rápida, responsive, SEO y experiencia cuidada.' },
+    { label: 'Backend', value: 'C# + Java', detail: 'APIs, reglas de negocio e integraciones mantenibles.' },
     { label: 'Datos', value: 'Postgres + Mongo + Oracle', detail: 'Persistencia pensada según el tipo de sistema.' },
-    { label: 'Entrega', value: 'Docker + GitHub', detail: 'Base lista para publicar, iterar y mantener.' }
+    { label: 'Entrega', value: 'Docker + GitHub', detail: 'Builds reproducibles y base lista para publicar.' }
   ],
   modes: [
     {
       id: 'frontend',
       label: 'Frontend',
-      title: 'Cockpit visual en Vue/Nuxt',
+      title: 'Interfaz principal en Vue/Nuxt',
       summary:
         'Interfaces que no se sienten improvisadas: navegación clara, estados cuidados, buen responsive y una primera impresión fuerte.',
       spec: 'Vue · Nuxt · TypeScript',
@@ -64,7 +64,7 @@ export const site = {
     {
       id: 'backend',
       label: 'Backend',
-      title: 'Motor de negocio en C# o Java',
+      title: 'Núcleo de negocio en C# o Java',
       summary:
         'APIs y servicios con estructura para crecer: autenticación, reglas de negocio, integraciones y endpoints claros.',
       spec: 'C# · Java · REST',
@@ -74,7 +74,7 @@ export const site = {
     {
       id: 'data',
       label: 'Datos',
-      title: 'Chasis de datos serio',
+      title: 'Capa de datos seria',
       summary:
         'Elijo la base según el problema: PostgreSQL para consistencia, MongoDB para flexibilidad y Oracle 21c para entornos robustos.',
       spec: 'PostgreSQL · MongoDB · Oracle 21c',
@@ -84,7 +84,7 @@ export const site = {
     {
       id: 'deploy',
       label: 'Deploy',
-      title: 'Entrega lista para pista',
+      title: 'Entrega lista para producción',
       summary:
         'Docker y GitHub para que el proyecto no se quede en “funciona en mi máquina”, sino que llegue a producción con orden.',
       spec: 'Docker · GitHub · Pages',
@@ -151,17 +151,17 @@ export const site = {
     {
       number: '01',
       title: 'Arquitectura que se entiende',
-      text: 'Flujos, carpetas, componentes, endpoints y datos con una forma fácil de mantener.'
+      text: 'Flujos, componentes, endpoints y datos organizados para que el sistema pueda crecer.'
     },
     {
       number: '02',
       title: 'Interfaz con presencia',
-      text: 'Pantallas que se ven actuales, responden bien y ayudan al usuario a avanzar.'
+      text: 'Pantallas actuales, responsive y enfocadas en que el usuario avance sin perderse.'
     },
     {
       number: '03',
       title: 'Entrega sin drama',
-      text: 'Build, deploy, assets y documentación preparados para que el proyecto pueda moverse.'
+      text: 'Build, deploy, assets y documentación preparados para publicar y mantener.'
     }
   ],
   stack: [

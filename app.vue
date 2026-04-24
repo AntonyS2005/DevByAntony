@@ -29,12 +29,14 @@ const isMenuOpen = ref(false)
 const activeMode = ref(site.modes[0].id)
 const pointerX = ref(50)
 const pointerY = ref(36)
+const parallaxY = ref(0)
 const scrollProgress = ref(0)
 const mailHref = computed(() => `mailto:${site.email}`)
 const activeSpec = computed(() => site.modes.find((mode) => mode.id === activeMode.value) ?? site.modes[0])
 const shellStyle = computed(() => ({
   '--cursor-x': `${pointerX.value}%`,
   '--cursor-y': `${pointerY.value}%`,
+  '--parallax-y': `${parallaxY.value}px`,
   '--scroll-progress': `${scrollProgress.value}`
 }))
 
@@ -45,6 +47,7 @@ const closeMenu = () => {
 const updateScrollProgress = () => {
   const scrollable = document.documentElement.scrollHeight - window.innerHeight
   scrollProgress.value = scrollable > 0 ? window.scrollY / scrollable : 0
+  parallaxY.value = Math.min(window.scrollY, 1600)
 }
 
 const updatePointer = (event: PointerEvent) => {
@@ -67,6 +70,11 @@ onBeforeUnmount(() => {
 <template>
   <div class="site-shell" :style="shellStyle">
     <div class="scroll-meter" aria-hidden="true" />
+    <div class="parallax-field" aria-hidden="true">
+      <span class="parallax-layer layer-back" />
+      <span class="parallax-layer layer-mid" />
+      <span class="parallax-layer layer-front" />
+    </div>
     <header class="nav-shell" :class="{ 'is-open': isMenuOpen }">
       <a class="brand" href="#top" aria-label="Ir al inicio" @click="closeMenu">
         <span class="brand-mark">DBA</span>
@@ -159,8 +167,8 @@ onBeforeUnmount(() => {
       <section class="performance-band full-bleed" aria-label="Resumen de rendimiento">
         <div class="performance-inner">
           <div class="performance-title">
-            <p class="eyebrow">Performance bay</p>
-            <h2>Tu proyecto entra como idea y sale como plataforma con motor propio.</h2>
+            <p class="eyebrow">Stack en capas</p>
+            <h2>Tu idea se divide en interfaz, backend, datos y entrega.</h2>
           </div>
           <div class="performance-grid">
             <article v-for="item in site.performance" :key="item.label" class="performance-card">
@@ -189,7 +197,7 @@ onBeforeUnmount(() => {
       <section id="demo" class="content-section demo-section" aria-labelledby="demo-title">
         <div class="section-heading">
           <p class="eyebrow">Demo de capacidad</p>
-          <h2 id="demo-title">Una página más cerca de un showroom: cada parte del stack tiene propósito.</h2>
+          <h2 id="demo-title">Cada parte del stack tiene propósito y se muestra sin adornos innecesarios.</h2>
         </div>
 
         <div class="mode-console">
@@ -266,15 +274,15 @@ onBeforeUnmount(() => {
       <section class="showcase-section full-bleed" aria-labelledby="showcase-title">
         <div class="showcase-inner">
           <div class="showcase-visual">
-            <img src="/performance-showroom.webp" alt="Showroom digital con telemetría de desarrollo" />
+            <img src="/architecture-parallax.webp" alt="Arquitectura digital en capas con telemetría" />
             <div class="showcase-hud">
               <Activity :size="18" aria-hidden="true" />
-              <span>systems online</span>
+              <span>layers synced</span>
             </div>
           </div>
           <div class="showcase-copy">
-            <p class="eyebrow">Showroom</p>
-            <h2 id="showcase-title">La diferencia está en cómo se siente el producto antes de explicar el código.</h2>
+            <p class="eyebrow">Arquitectura visual</p>
+            <h2 id="showcase-title">El impacto visual debe explicar orden, no solo decorar la pantalla.</h2>
             <div class="showcase-list">
               <article v-for="item in site.showcase" :key="item.number">
                 <span>{{ item.number }}</span>
