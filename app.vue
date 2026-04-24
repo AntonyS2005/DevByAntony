@@ -137,7 +137,7 @@ onBeforeUnmount(() => {
           </dl>
 
           <div class="launch-ribbon" aria-label="Stack principal">
-            <span>Launch stack</span>
+            <span>Stack principal</span>
             <strong>Vue/Nuxt · C#/Java · PostgreSQL · MongoDB · Oracle 21c · Docker</strong>
           </div>
         </div>
@@ -277,7 +277,7 @@ onBeforeUnmount(() => {
             <img src="/architecture-parallax.webp" alt="Arquitectura digital en capas con telemetría" />
             <div class="showcase-hud">
               <Activity :size="18" aria-hidden="true" />
-              <span>layers synced</span>
+              <span>capas sincronizadas</span>
             </div>
           </div>
           <div class="showcase-copy">
