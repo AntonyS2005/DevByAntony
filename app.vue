@@ -32,6 +32,8 @@ const pointerY = ref(36)
 const parallaxY = ref(0)
 const scrollProgress = ref(0)
 const mailHref = computed(() => `mailto:${site.email}`)
+const baseURL = useRuntimeConfig().app.baseURL
+const assetPath = (path: string) => `${baseURL}${path.replace(/^\/+/, '')}`
 const activeSpec = computed(() => site.modes.find((mode) => mode.id === activeMode.value) ?? site.modes[0])
 const shellStyle = computed(() => ({
   '--cursor-x': `${pointerX.value}%`,
@@ -143,7 +145,7 @@ onBeforeUnmount(() => {
         </div>
 
         <div class="hero-visual reveal delay-1" aria-label="Ambiente tech noir DevByAntony">
-          <img src="/hero-tech-noir.webp" alt="Estación de desarrollo con estética tech noir" />
+          <img :src="assetPath('/hero-tech-noir.webp')" alt="Estación de desarrollo con estética tech noir" />
           <div class="runway-lines" aria-hidden="true">
             <span />
             <span />
@@ -274,7 +276,7 @@ onBeforeUnmount(() => {
       <section class="showcase-section full-bleed" aria-labelledby="showcase-title">
         <div class="showcase-inner">
           <div class="showcase-visual">
-            <img src="/architecture-parallax.webp" alt="Arquitectura digital en capas con telemetría" />
+            <img :src="assetPath('/architecture-parallax.webp')" alt="Arquitectura digital en capas con telemetría" />
             <div class="showcase-hud">
               <Activity :size="18" aria-hidden="true" />
               <span>capas sincronizadas</span>
@@ -375,7 +377,7 @@ onBeforeUnmount(() => {
             {{ site.email }}
             <ArrowRight :size="18" aria-hidden="true" />
           </a>
-          <a class="button secondary" :href="site.cvPath" download>
+          <a class="button secondary" :href="assetPath(site.cvPath)" download>
             <Download :size="19" aria-hidden="true" />
             Descargar CV
           </a>
